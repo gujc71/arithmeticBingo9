@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Multiplication Bingo - Beginner</h1>
+  <div class="button-container">
+    <button onclick="startGame(2)">M2</button>
+    <button onclick="startGame(3)">M3</button>
+    <button onclick="startGame(4)">M4</button>
+    <button onclick="startGame(5)">M5</button>
+    <button onclick="startGame(6)">M6</button>
+    <button onclick="startGame(7)">M7</button>
+    <button onclick="startGame(8)">M8</button>
+    <button onclick="startGame(9)">M9</button>	
+  </div>
+  <div class="bingo-board" id="bingoBoard"></div>
+
+  <!-- 타이머 게이지 -->
+  <div class="timer-container">
+    <div class="timer" id="timerDisplay">30초</div>
+    <div class="timer-gauge" id="timerGauge"></div>
+  </div>
+
+  <!-- 결과 입력 모달 창 -->
+  <div class="modal" id="inputModal">
+    <div class="modal-content">
+      <label for="result">결과 입력:</label>
+      <input type="number" id="result" onkeydown="handleInputKeyDown(event)">
+      <button onclick="submitResult()">확인</button>
+    </div>
+  </div>
+
+  <!-- 메시지 모달 창 -->
+  <div class="modal" id="messageModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeMessageModal()">&times;</span>
+      <p id="messageText"></p>
+    </div>
+  </div>
+
+  <script src="chatGPT.js"></script>
+</body>
+</html>

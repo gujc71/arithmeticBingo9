@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <script src="arithmeticBingo9.js"></script>
+  <script src="division2.js"></script>
+  <script>
+    let arithmeticBinfo9;
+    window.onload = function(){
+      arithmeticBinfo9 = new DivisionBingoLevel2(15, "all");
+      arithmeticBinfo9.startGame(3)
+    } 
+    function startGame(level) {
+      arithmeticBinfo9.startGame(level);
+    }   
+  </script>
+</head>
+<body>
+  <h1>Division Bingo - Advanced</h1>
+  <div class="button-container">
+    <button onclick="startGame(3)">3 x 3</button>
+    <button onclick="startGame(4)">4 x 4</button>
+    <button onclick="startGame(5)">5 x 5</button>
+  </div>
+  <div class="bingo-star" id="bingoStar">💙</div>
+  <div class="bingo-board" id="bingoBoard"></div>
+  <div class="bingo-level">
+	  <a href="division1.html">Beginner</a> /
+	  <a href="division2.html">Middle</a> /
+    <a href="division3.html">Advanced </a>
+  </div>
+  
+<!-- timer gauge -->
+  <div class="timer-container">
+    <div class="timer" id="timerDisplay">30s</div>
+    <div class="timer-gauge" id="timerGauge"></div>
+	<div class="timer-bomb">💣</div>
+  </div>
+
+  <!-- user input modal window -->
+  <div class="modal" id="inputModal">
+    <div class="modal-content">
+      <label for="result">Result:</label>
+      <input type="number" id="mathResult">
+      <button id="submitBtn">Submit</button>
+    </div>
+  </div>
+
+  <!-- message modal window  -->
+  <div class="modal" id="messageModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <p id="messageText"></p>
+    </div>
+  </div>
+</body>
+</html>
