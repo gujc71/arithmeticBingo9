@@ -156,17 +156,19 @@ class ArithmeticBingo9 {
   checkBingo() {
     const bingoBoard = document.getElementById("bingoBoard");
     const cells = bingoBoard.getElementsByClassName("cell");
+    let chkGameOver = false;
     for (let i = 0; i < this.cellCount; i++) {
       if ( this.horizonBingo(cells, i*this.cellCount) || this.verticalBingo(cells, i) ) {
-        this.isGameOver = true;
+        chkGameOver = true;
         break;
       }
     }
     if ( this.diagonal_1(cells) || this.diagonal_2(cells)) {
-      this.isGameOver = true;
+      chkGameOver = true;
     }
 
-    if ( this.isGameOver) {
+    if (chkGameOver) {
+      this.isGameOver = true;
       this.stopTimer();
       this.showModal("<span>💝</span> Bingo!");
     }
@@ -180,7 +182,6 @@ class ArithmeticBingo9 {
   // 가로줄 빙고 확인
   horizonBingo(cells, index) {
     for (let i = 0; i <   this.cellCount; i++) {
-	    //console.info(`horizonBingo ${index+i}`);
       if (!cells[index+i].classList.contains("marked")) return false;
     }
     return true;
@@ -188,7 +189,6 @@ class ArithmeticBingo9 {
   // 세로줄 빙고 확인
   verticalBingo(cells, index) {
     for (let i = 0; i <   this.cellCount; i++) {
-	    //console.info(`verticalBingo ${index+i*  this.cellCount}`);
       if (!cells[index+i*  this.cellCount].classList.contains("marked")) return false;
     }
     return true;
@@ -196,14 +196,12 @@ class ArithmeticBingo9 {
    // 대각선 빙고 확인
   diagonal_1(cells) {
     for (let i = 0; i <   this.cellCount; i++) {
-	    //console.info(`diagonal_1 ${i * (  this.cellCount+1)}`);
       if (!cells[i * (  this.cellCount+1)].classList.contains("marked")) return false;
     }
     return true;
   }
   diagonal_2(cells) {
     for (let i = 1; i <=   this.cellCount; i++) {
-	    //console.info(`diagonal_2 ${i * (  this.cellCount-1)}`);
       if (!cells[i * (  this.cellCount-1)].classList.contains("marked")) return false;
     }
     return true;
@@ -211,6 +209,7 @@ class ArithmeticBingo9 {
 
   endGameFail() {
     this.stopTimer();
+    this.closeInputModal();
     this.isGameOver = true;
     this.showModal("<span>💥</span> try again.");
   }
